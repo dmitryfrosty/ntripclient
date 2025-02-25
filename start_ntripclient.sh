@@ -9,12 +9,12 @@ SERIAL_BAUDRATE=115200           # Serial baudrate
 SERIAL_TIMEOUT=1                 # Serial timeout
 
 # NTRIP Client Configurations
-NTRIP_SERVER="www.euref-ip.net"  # NTRIP server
-NTRIP_PORT=2101                  # NTRIP port
-NTRIP_VERSION="Ntrip/1.0"        # NTRIP version
-MOUNTPOINT="M0uNtp0iNt"          # NTRIP mountpoint
-USERNAME="username"              # NTRIP server username
-PASSWORD="password"              # NTRIP server password
+NTRIP_SERVER="ntrip.eftgroup.ru"  # NTRIP server
+NTRIP_PORT=7054                  # NTRIP port
+NTRIP_VERSION=1        # NTRIP version
+MOUNTPOINT="be"          # NTRIP mountpoint
+USERNAME="bebebe"              # NTRIP server username
+PASSWORD="bebebe"              # NTRIP server password
 #----------------------------------------------------------
 
 

@@ -18,28 +18,17 @@ def main(serial_port, serial_baudrate, serial_timeout, ntrip_server, ntrip_port,
         ntripclient.connect()
 
         while True:
-            # Read NMEA data from serial port
-            nmea_data = serial.readline()
+            # Get RTCM data from NTRIP server
+            rtcm_data = ntripclient.receive_rtcm()
             
-            if nmea_data and nmea_data.startswith('$GNGGA'):
-                print(f"\nNMEA Data: {nmea_data}")
+            if rtcm_data:
+                print("\nReceived RTCM data from NTRIP server.")
+                print(f"RTCM Data: {rtcm_data}")
 
-                # Send NMEA data to NTRIP
-                ntripclient.send_nmea(nmea_data)
+                # Write RTCM data to serial port
+                serial.write(rtcm_data)
             
-                # Get RTCM data from NTRIP server
-                rtcm_data = ntripclient.receive_rtcm()
-            
-                if rtcm_data:
-                    print("\nReceived RTCM data from NTRIP server.")
-                    print(f"RTCM Data: {rtcm_data}")
-
-                    # Write RTCM data to serial port
-                    serial.write(rtcm_data)
-            else:
-                print("Invalid NMEA data.")
-            
-            #time.sleep(0.5)
+            time.sleep(0.1)
 
     except Exception as e:
         print(f"Error: {e}")
